@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Consultation des factures
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-list-header>Liste des abonnements</ion-list-header>
+      
+        <ion-item >
+            <!-- *ngFor="let item of selectItem" value="{{item.id}}" -->
+          <ion-label>Abonnements</ion-label>
+          <ion-select *ngFor="let sel of selectItem" [(ngModel)]="val" (ionChange)="getId(val)" okText="Okay" cancelText="Dismiss">
+            <ion-select-option value="{{sel.id}}">{{sel.id}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      
+      </ion-list>
+      <ion-button id="btnAfficher" ion-button (click)="getData()" color="secondary">Afficher</ion-button>
+      <ion-card no-padding>
+          <ion-card-header>
+             <p style="margin-left:-9px;"> last orders buy  </p>
+          </ion-card-header>
+      
+          <ion-card-content no-padding>
+            <ion-grid> 
+              <ion-row>
+                <ion-col col col-1 style="font-size: 10px">
+                  ID 
+                </ion-col>
+                <ion-col col col-2 style="font-size: 10px">
+                      Mois
+                </ion-col>
+                <ion-col style="font-size: 9px;">
+                    Consommation
+                </ion-col>
+                <ion-col style="font-size: 10px ">
+                    Prix
+                </ion-col>
+                <ion-col col col-2 style="font-size: 10px">
+                    Reglement
+                </ion-col>
+                
+              </ion-row>
+      
+      
+              </ion-grid>
+      
+              <ion-grid>
+      
+                    <ion-row  *ngFor="let item of items" >
+      
+                   <ion-col col col-1  style="font-size:10px;">
+                 {{item.id}}
+                  </ion-col>
+                 <ion-col col col-2 style="font-size:10px">
+          {{item.mois}}
+                  </ion-col>
+                   <ion-col style="font-size:10px">
+          {{item.consommation}}
+                  </ion-col>
+                   <ion-col style="font-size:10px">
+          {{item.prix}}
+                  </ion-col>
+                   <ion-col col-2 style="font-size:10px">
+          {{item.reglement}}
+                  </ion-col>
+                  
+              </ion-row>
+      
+            </ion-grid>
+      
+          </ion-card-content>
+        </ion-card>
+</ion-content>
